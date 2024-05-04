@@ -8,7 +8,7 @@ nim_1122-1
 ```
 
 ### Genesis file
-Available in this repository: [genesis.json](./genesis.json)
+Available in this repository: [genesis.json.zip](./genesis.json.zip)
 ```sh
 wget  https://raw.githubusercontent.com/Nim-Network-Foundation/mainnet/main/genesis.json.zip
 
@@ -29,12 +29,12 @@ NOT YET PROVIDED
 NOT YET PROVIDED
 
 ### Binary version
-Actually, we run on the binary `v2.1.0`
+Actually, we run on the binary `v2.1.3-rc01`
 You can make sure of the version by running:
 
 ```sh
 $ rollapp-evm version
-v2.1.0
+v2.1.3-rc01
 ```
 
 ### Code SDK
@@ -63,7 +63,7 @@ This tutorial assume you already have Golang installed on your machine. Due to v
 ```sh
 $ git clone https://github.com/dymensionxyz/rollapp-evm.git
 $ cd rollapp-evm
-$ git checkout v2.1.0
+$ git checkout v2.1.3-rc01
 $ export BECH32_PREFIX=nim
 $ make install
 ```
@@ -75,12 +75,12 @@ rollapp-evm version --long
 ```
 ```
 build_tags: netgo,ledger
-commit: b5b1824a3ae081c88a53b41426ff5455b9a1438c
+commit: 37c7b0f907ea97149856f3d344c0a2255ff81c79
 cosmos_sdk_version: v0.46.16
 go: go version go1.22.2 darwin/arm64
 name: dymension-rdk
 server_name: rollapp-evm
-version: v2.1.0
+version: v2.1.3-rc01
 ```
 
 ### Setup a Celestia node
