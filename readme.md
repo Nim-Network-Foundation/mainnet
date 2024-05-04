@@ -85,7 +85,11 @@ version: v2.1.3-rc01
 
 ### Setup a Celestia node
 
-In order to configure your dymint.toml you need a Celestia node available. This readme do not cover that part.
+In order to configure your dymint.toml you need a Celestia node available. This readme do not cover that part. You might need your own node.
+
+### Setup a Dymension node to have RPC
+
+In order to configure your dymint.toml you need a Dymension RPC available. This readme do not cover that part, but you can use public ones.
 
 ### Setup your node
 
