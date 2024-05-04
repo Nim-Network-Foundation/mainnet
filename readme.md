@@ -189,14 +189,14 @@ const response = await client.sendTokens(fromAddress, '<to-address>', coins, 'au
 Using CosmJS, you can re-encode a bech32 address to hex and back. Sample code:
 
 ```js
-import { fromBech32, fromHex, toBech32, toHex } from ‘cosmjs/packages/encoding’;
+import {fromBech32, fromHex, toBech32, toHex} from 'cosmjs/packages/encoding';
 
-export  const  convertToHexAddress  = (bech32Address:  string):  string  => {
-	return  '0x'  +  toHex(fromBech32(bech32Address).data);
+export const convertToHexAddress = (bech32Address: string): string => {
+    return '0x' + toHex(fromBech32(bech32Address).data);
 };
 
-export  const  convertToBech32Address  = (hexAddress:  string, bech32Prefix:  string):  string  => {
-	return  toBech32(bech32Prefix, fromHex(hexAddress.replaceAll(/^0x/g, '')));
+export const convertToBech32Address = (hexAddress: string, bech32Prefix: string): string => {
+    return toBech32(bech32Prefix, fromHex(hexAddress.replaceAll(/^0x/g, '')));
 };
 ```
 
