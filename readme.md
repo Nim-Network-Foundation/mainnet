@@ -10,7 +10,11 @@ nim_1122-1
 ### Genesis file
 Available in this repository: [genesis.json](./genesis.json)
 ```sh
-curl -s  https://raw.githubusercontent.com/Nim-Network-Foundation/mainnet/main/genesis.json > ~/.rollapp_evm/config/genesis.json
+wget  https://raw.githubusercontent.com/Nim-Network-Foundation/mainnet/main/genesis.json.zip
+
+unzip genesis.json.zip
+
+mv genesis.json ~/.rollapp_evm/config/genesis.json
 
 sha256sum ~/.rollapp_evm/config/genesis.json
 cbff2650625cb02240757e76b3c00a0f04ff9347e51ec69eaddbc2b40f2c2335
