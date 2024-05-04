@@ -79,6 +79,10 @@ server_name: rollapp-evm
 version: v2.1.0
 ```
 
+### Setup a Celestia node
+
+In order to configure your dymint.toml you need a Celestia node available. This readme do not cover that part.
+
 ### Setup your node
 
 #### Initialize
@@ -116,6 +120,13 @@ nano ~/.rollapp_evm/config/config.toml
 ```sh
 nano ~/.rollapp_evm/config/app.toml
 ```
+
+### Configure your dymint.toml
+
+* Settlement layer is `dymension`
+* Rollapp ID is `nim_1122-1`
+* Data availability layer is `celestia`
+* Namespace ID is `bcfaef0d36e7428befbd`
 
 #### Create a systemd service file
 ```sh
