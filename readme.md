@@ -207,3 +207,47 @@ export const convertToBech32Address = (hexAddress: string, bech32Prefix: string)
 For example, in order to subscribe to all the transfers which has been made to specific account, one can use the tendermint RPC’s subscribe method with the combination of the following filter: 
 
 `tm.event = 'Tx' AND transfer.recipient = 'nim1u4jwp05ejr2s5cwrlheqzfu6cjfuwghgc7zegh'`
+
+## Running your own governor
+
+According to Dymension Documentation:  
+> Governors are similar to validators in Cosmos app-chains or board members in a company. Governors do not operate nodes yet they receive token delegations, vote on onchain governance proposals and disburse the revenue (fees and new mints) generated to their delegators. It is permissionless to become a Governors for a RollApp.
+
+A governor is a validator without a node. You can create one quite easily, once you have the `rollapp-evm` CLI installed. It does not require any fullnode running, you can use a public RPC to create it.
+
+#### Add a key to your local keypair if you don't have one yet
+
+After creating the keypair, make sure to send coins to that address so it actually exists on the network.
+
+Make sure that you backup your keypair. If you loose it, you loose access to your governor, and to any governance / voting rights, as well as coins and inflation rewards.
+
+```sh
+$ rollapp-evm keys add my-super-governor
+- address: nim17nst0h0f9s2u8juukt3l7ms68vzww6ve88mw7k
+  name: my-super-governor
+  pubkey: '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"A5uqp0uHl7ZkT12zyVJP4KdrST85IM9HltQzk0pdop4M"}'
+  type: local
+```
+
+#### Broadcast the transaction to create your governor
+```sh
+rollapp-evm tx staking create-validator --moniker "My Super Governor" --commission-max-change-rate=0.01 --commission-max-rate=0.3 --commission-rate=0.05 --from my-super-governor --min-self-delegation 1 --amount 10000000000000000000anim --node "https://nim-mainnet-tendermint.public.blastapi.io:443" --pubkey $(rollapp-evm dymint show-sequencer) --fees 20000000000000anim
+```
+
+The important parts of that command are the following:
+
+* Commission max rate and commission max change rate cannot be edited after
+* You shouldn't have too large commission change rate.
+* You must not impersonate the NIM Network team, name or foundation
+* You can customize more things about your governor by using specific parameters (like `--description` or `--website`)
+* You can change the initial delegation you're self-staking by changing the `--amount` parameter
+
+Once broadcasted, the CLI will give you a tx hash. You can check that everything went fine by running a query
+
+```sh
+rollapp-evm query tx <MY_SUPER_HASH> --node "https://nim-mainnet-tendermint.public.blastapi.io:443"
+```
+
+If there was any error, any out of gas or lacking fees, you should see it. Otherwise, after a few minutes, you will be able to see your governor on the Dymension portal.
+
+Congrats !
